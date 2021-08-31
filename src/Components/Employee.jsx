@@ -2,10 +2,10 @@ import { Component } from "react";
 import  faker from 'faker';
 import uniqid from 'uniqid';
 import EmployeeCard  from "./EmployeeCard";
-import {Button} from './style'
+import {EmpList ,Button} from './style'
 
 
-class Employee extends Component{
+class Employees extends Component{
   
     state = {
         Employees:[]
@@ -27,8 +27,11 @@ class Employee extends Component{
         return <div>
             <h3>Random Emplyee Generator</h3>
                 <Button onClick={this.generateEmployee} primary> Generate</Button>
-                <EmployeeCard data={ this.state.Employees } />
-
+                <EmpList>
+                    {this.state.Employees.map((emp)=>{
+                       return <EmployeeCard data={ emp } />
+                    })}
+                </EmpList>
                 {/* <div className='emp-list'>
                 {this.state.Employees.map((emp)=>(
                     <div id ={emp.empId} >
@@ -40,4 +43,4 @@ class Employee extends Component{
         </div>
     }
 }
-export default Employee;
+export default Employees;
